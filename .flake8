@@ -1,0 +1,2 @@
+[flake8]
+exclude = venv,.venv,migrations,*/migrations/*,.git,__pycache__

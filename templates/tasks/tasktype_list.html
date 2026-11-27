@@ -1,0 +1,34 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Task Types | Task Manager{% endblock %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Task Types</h1>
+    <a href="{% url 'tasks:task-type-create' %}" class="btn btn-primary">+ Add Task Type</a>
+  </div>
+
+  {% if tasktype_list %}
+    <table class="table table-striped table-hover bg-white shadow-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th class="text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task_type in tasktype_list %}
+          <tr>
+            <td>{{ task_type.name }}</td>
+            <td class="text-right text-nowrap">
+              <a href="{% url 'tasks:task-type-update' pk=task_type.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+              <a href="{% url 'tasks:task-type-delete' pk=task_type.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="alert alert-info">No task types found.</div>
+  {% endif %}
+{% endblock %}

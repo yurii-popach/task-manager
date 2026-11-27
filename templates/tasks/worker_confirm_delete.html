@@ -1,0 +1,17 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Delete Worker | Task Manager{% endblock %}
+
+{% block content %}
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h1 class="h4 text-danger mb-3">Delete Worker</h1>
+      <p>Are you sure you want to delete worker <strong>"{{ worker.username }}"</strong>?</p>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'tasks:worker-detail' pk=worker.pk %}" class="btn btn-outline-secondary">Cancel</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}
